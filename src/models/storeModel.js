@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 const storeSchema = new Schema({
     storeName: String,
+    image: String,
     createdAt: {
         type: Date,
         default: Date.now,
