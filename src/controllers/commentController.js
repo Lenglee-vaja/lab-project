@@ -18,8 +18,8 @@ class CommentController {
     }
     static async getMany(req, res) {
         try {
-            const comment = await Models.comment.find()
-            return SendSuccess(res, statusMessage.SUCCESS, comment)
+            const comments = await Models.comment.find().sort({ createdAt: -1 });
+            return SendSuccess(res, statusMessage.SUCCESS, comments)
         } catch (error) {
             console.log("errr=========>", error);
             return SendError500(res, statusMessage.SERVER_ERROR, error)
