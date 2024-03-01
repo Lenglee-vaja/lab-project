@@ -8,7 +8,6 @@ class CommentController {
             if (!req.body) return SendError400(res, statusMessage.BAD_REQUEST)
             const newData = {
                 ...req.body,
-                createdBy: req.payload._id.toString(),
             }
             const comment = await Models.comment.create(newData)
             return SendSuccess(res, statusMessage.SUCCESS, comment)
@@ -19,7 +18,7 @@ class CommentController {
     }
     static async getMany(req, res) {
         try {
-            const comment = await Models.comment.find().populate("createdBy").populate("storeId")
+            const comment = await Models.comment.find()
             return SendSuccess(res, statusMessage.SUCCESS, comment)
         } catch (error) {
             console.log("errr=========>", error);
@@ -28,7 +27,7 @@ class CommentController {
     }
     static async getOne(req, res) {
         try {
-            const comment = await Models.comment.findById(req.params.id).populate("createdBy").populate("storeId")
+            const comment = await Models.comment.findById(req.params.id)
             return SendSuccess(res, statusMessage.SUCCESS, comment)
 
         } catch (error) {

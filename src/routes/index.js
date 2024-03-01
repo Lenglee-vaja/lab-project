@@ -21,7 +21,7 @@ route.get("/store/getMany", Controller.StoreController.getMany)
 route.get("/store/get/:id", Controller.StoreController.getOne)
 
 //comment
-route.post("/comment/create", VerifyToken, Controller.CommentController.create)
+route.post("/comment/create", Controller.CommentController.create)
 route.get("/comment/getMany", Controller.CommentController.getMany)
 route.get("/comment/get/:id", Controller.CommentController.getOne)
 
